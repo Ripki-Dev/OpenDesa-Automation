@@ -8,7 +8,7 @@ Feature: Login OpenDesa Admin Page
   Scenario: Login as admin with valid account
     When I enter username "admin" and password "sid304"
     And I click button login "Masuk"
-    Then I navigated to login page
+    Then I navigated to dashboard page
 
   Scenario: Login with invalid account in Admin page
     When I enter username "Wrong123" and password "It'sWrong"
@@ -23,3 +23,8 @@ Feature: Login OpenDesa Admin Page
   Scenario: Only click button login in Admin page
     When I click button login "Masuk"
     Then validate failed message
+
+  Scenario: Trigger block login access
+    When I enter username "block" and password "me!"
+    And I click button login 3 times
+    Then validate countdown login message

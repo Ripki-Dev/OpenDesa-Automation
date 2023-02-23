@@ -45,6 +45,7 @@ public class LoginAdmin {
     @Then("validate is in Admin Login Page")
     public void validateIsInAdminLogin() {
         driver.findElement(By.cssSelector("div[class='login-footer-top'] h1")).isDisplayed();
+        quiteWEB();
     }
 
     @When("I enter username {string} and password {string}")
@@ -67,6 +68,23 @@ public class LoginAdmin {
     public void validateFailedMessage() {
         driver.findElement(By.className("error")).isDisplayed();
         System.out.println(driver.findElement(By.className("error")).getText());
+        quiteWEB();
+    }
+
+    @And("I click button login {int} times")
+    public void iClickButtonLoginTimes(int time) {
+        int n = 0;
+        for (int i = 0; i < 3; i++) {
+            iEnterUsernameAndPassword("block", "me");
+            iClickButtonLogin("");
+            n++;
+        }
+    }
+
+    @Then("validate countdown login message")
+    public void validateCountdownLoginMessage() {
+        driver.findElement(By.id("countdown")).isDisplayed();
+        System.out.println(driver.findElement(By.id("countdown")).getText());
         quiteWEB();
     }
 }

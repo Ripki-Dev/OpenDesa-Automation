@@ -28,5 +28,3 @@ Feature: Login OpenDesa Admin Page
     When I enter username "block" and password "me!"
     And I click button login 3 times
     Then validate countdown login message
-
-#  Scenario: ON PROGRESSSS
